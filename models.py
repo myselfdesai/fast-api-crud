@@ -1,8 +1,8 @@
-import datetime
+from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime
 
 
-from .database import Base
+from database import Base
 
 class User(Base):
     __tablename__ = "users"
@@ -11,4 +11,4 @@ class User(Base):
     name = Column(String, nullable=False)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
-    last_login = Column(DateTime, default=datetime.utcnow)
+    # last_login = Column(DateTime, default=datetime)

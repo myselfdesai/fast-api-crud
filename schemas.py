@@ -5,12 +5,13 @@ class UserBase(BaseModel):
     email: str
 
 class UserCreate(UserBase):
+    name: str
     password: str
 
 class User(UserBase):
     id: int
     name: str
-    last_login: datetime
+    # last_login: datetime
 
     class Config:
         orm_mode = True
