@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from pydantic import BaseModel
 
 class UserBase(BaseModel):
@@ -11,7 +11,7 @@ class UserCreate(UserBase):
 class User(UserBase):
     id: int
     name: str
-    # last_login: datetime
+    last_login: datetime
 
     class Config:
         orm_mode = True

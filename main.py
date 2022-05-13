@@ -36,3 +36,11 @@ def delete_user(user_id: int, db: Session = Depends(services.get_db)):
 @app.put("/users/{user_id}", response_model=schemas.User)
 def update_user(user_id: int, user: schemas.UserCreate, db: Session = Depends(services.get_db)):
     return crud.update_user(db=db, user=user, user_id=user_id)
+
+@app.get("/login/")
+def login(email: str, password:str, db: Session = Depends(services.get_db)):
+    is_auth = crud.user_auth(db=db, email=email, password=password)
+    if is_auth:
+        return {"message": f"successfully login : {is_auth.name}"}
+    else:
+        raise HTTPException(status_code=401, detail="unauthorised access please check your login details")
