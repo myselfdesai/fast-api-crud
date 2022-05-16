@@ -1,8 +1,9 @@
 from datetime import datetime
 from pydantic import BaseModel
+from pydantic.networks import EmailStr
 
 class UserBase(BaseModel):
-    email: str
+    email: EmailStr
 
 class UserCreate(UserBase):
     name: str
